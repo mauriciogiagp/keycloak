@@ -1251,13 +1251,6 @@
             </dependency>
             <dependency>
                 <groupId>org.keycloak</groupId>
-                <artifactId>keycloak-testsuite-tools</artifactId>
-                <version>${project.version}</version>
-                <classifier>classes</classifier>
-            </dependency>
-
-            <dependency>
-                <groupId>org.keycloak</groupId>
                 <artifactId>federation-properties-example</artifactId>
                 <version>${project.version}</version>
             </dependency>

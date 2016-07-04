@@ -14,6 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package org.keycloak.testsuite;
 
 import io.undertow.Undertow;
@@ -35,11 +36,9 @@ import org.keycloak.services.filters.KeycloakSessionServletFilter;
 import org.keycloak.services.managers.ApplianceBootstrap;
 import org.keycloak.services.managers.RealmManager;
 import org.keycloak.services.resources.KeycloakApplication;
-import org.keycloak.testsuite.util.cli.TestsuiteCLI;
 import org.keycloak.util.JsonSerialization;
 
 import javax.servlet.DispatcherType;
-import javax.ws.rs.core.Application;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -142,7 +141,7 @@ public class KeycloakServer {
             String resources = System.getProperty("resources");
             if (resources == null || resources.equals("") || resources.equals("true")) {
                 if (System.getProperties().containsKey("maven.home")) {
-                    resources = System.getProperty("user.dir").replaceFirst("testsuite.integration.*", "");
+                    resources = System.getProperty("user.dir").replaceFirst("testsuite.tools.*", "");
                 } else {
                     for (String c : System.getProperty("java.class.path").split(File.pathSeparator)) {
                         if (c.contains(File.separator + "testsuite" + File.separator + "integration")) {
@@ -208,10 +207,6 @@ public class KeycloakServer {
                 keycloak.stop();
             }
         });
-
-        if (System.getProperties().containsKey("startTestsuiteCLI")) {
-            new TestsuiteCLI(keycloak).start();
-        }
 
         return keycloak;
     }
